@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Save, Sparkles, Target, Coins, Tag, Mail, Flame, X, Briefcase } from 'lucide-react';
+import { Save, Sparkles, Target, Coins, Tag, Mail, Flame, X, Briefcase, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { saveOpportunity, getSkillsList, type OpportunityFormData } from '@/actions/opportunity-form';
@@ -196,7 +196,7 @@ export default function OpportunityForm({ initialData, type = 'job', onSuccess }
                <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-4 text-yellow-700">
                     <Coins size={20} />
-                    <span className="font-black">בונוס "חבר מביא חבר" (FNX Coins)</span>
+                    <span className="font-black">בונוס &quot;חבר מביא חבר&quot; (FNX Coins)</span>
                   </div>
                   <input
                     type="number"

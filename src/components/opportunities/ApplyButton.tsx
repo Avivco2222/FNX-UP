@@ -195,7 +195,7 @@ function JobApplicationFlow({ job, onClose }: FlowProps) {
                   <AlertTriangle className="text-orange-500 shrink-0" size={24} />
                   <div>
                     <p className="text-sm font-black text-orange-800">שים לב - התאמה של {aiScore}%</p>
-                    <p className="text-xs text-orange-700 mt-1">התאמת המיומנויות שלך למשרה נמוכה מ-70%. כדאי לשקול השלמת קורס "אקסל מתקדם" כדי לשפר את סיכוייך.</p>
+                    <p className="text-xs text-orange-700 mt-1">התאמת המיומנויות שלך למשרה נמוכה מ-70%. כדאי לשקול השלמת קורס &quot;אקסל מתקדם&quot; כדי לשפר את סיכוייך.</p>
                   </div>
                 </div>
               )}
@@ -226,7 +226,7 @@ function JobApplicationFlow({ job, onClose }: FlowProps) {
                    <Sparkles size={40} />
                  </div>
                  <h3 className="text-2xl font-black text-slate-900">מוכן לשגר?</h3>
-                 <p className="text-slate-500">בלחיצה על "שלח", המועמדות שלך תעבור למגייסת.</p>
+                 <p className="text-slate-500">בלחיצה על &quot;שלח&quot;, המועמדות שלך תעבור למגייסת.</p>
               </div>
 
               <div className="bg-purple-50 p-6 rounded-[32px] border border-purple-100 flex items-center justify-between">
