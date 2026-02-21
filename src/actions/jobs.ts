@@ -174,8 +174,9 @@ async function processSkills(
       const skillName = parsedSkill.name.trim();
       if (!skillName) continue;
 
-      const skillId = await findOrCreateSkill(supabase, skillName, data.department, errors);
-      if (!skillId) continue;
+      const result = await findOrCreateSkill(supabase, skillName, data.department, errors);
+      if (!result) continue;
+      if (result.created) skillsCreated++;
 
       parsedSkill.is_mandatory ??= false;
 
@@ -184,7 +185,7 @@ async function processSkills(
         .upsert(
           {
             job_id: jobId,
-            skill_id: skillId,
+            skill_id: result.id,
             required_level: parsedSkill.level,
             weight: parsedSkill.level,
             is_mandatory: parsedSkill.is_mandatory,
@@ -211,7 +212,7 @@ async function findOrCreateSkill(
   skillName: string,
   department: string | undefined,
   errors: string[],
-): Promise<string | null> {
+): Promise<{ id: string; created: boolean } | null> {
   const { data: existingSkill } = await supabase
     .from('skills')
     .select('id')
@@ -219,7 +220,7 @@ async function findOrCreateSkill(
     .limit(1)
     .single();
 
-  if (existingSkill) return existingSkill.id;
+  if (existingSkill) return { id: existingSkill.id, created: false };
 
   const slug = slugifySkillName(skillName);
   const { data: newSkill, error: skillError } = await supabase
@@ -242,5 +243,5 @@ async function findOrCreateSkill(
     return null;
   }
 
-  return newSkill.id;
+  return { id: newSkill.id, created: true };
 }
