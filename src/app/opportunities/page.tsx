@@ -3,16 +3,17 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Search, Heart, Flame, Zap, Coins, Sparkles, 
-  Users, Target, Clock, Filter, Trophy, Star, Briefcase,
-  ChevronRight, ChevronLeft, MapPin, Smile, Rocket, Coffee, 
-  CheckCircle2, UserCheck, Upload, ChevronRight as ChevronRightSmall,
-  Mail, AlertTriangle, Link as LinkIcon, PartyPopper, BookOpen
+  Search, Heart, Zap, Coins, Sparkles, 
+  Users, Target, Clock, Briefcase,
+  ChevronRight, ChevronLeft, MapPin, Smile, Rocket, 
+  CheckCircle2, UserCheck, Upload,
+  Mail, Link as LinkIcon, PartyPopper, BookOpen
 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import Image from 'next/image';
 
 // ==========================================
 // 1. DATA GENERATION
@@ -97,12 +98,6 @@ export default function OpportunitiesPage() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] pb-20 font-sans" dir="rtl">
-      <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet" />
-      <style jsx global>{`
-        body { font-family: 'Heebo', sans-serif; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
       
       {/* HEADER */}
       <header className="bg-white/95 backdrop-blur-xl sticky top-0 z-50 border-b border-slate-200/60 px-8 py-4 shadow-sm">
@@ -130,7 +125,7 @@ export default function OpportunitiesPage() {
             <div className="relative h-[500px] rounded-[40px] overflow-hidden shadow-2xl">
               <AnimatePresence mode="wait">
                 <motion.div key={currentHero} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.8 }} className="absolute inset-0">
-                  <img src={ALL_JOBS[currentHero].image} className="w-full h-full object-cover" alt="Hero" />
+                  <Image src={ALL_JOBS[currentHero].image} fill className="object-cover" alt="Hero" />
                   <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/40 to-transparent z-10" />
                   <div className="absolute inset-y-0 right-0 w-full md:w-1/2 flex flex-col justify-center p-16 z-20 text-white">
                     <Badge className="w-fit mb-6 bg-blue-600 border-none font-bold px-4 py-1.5 text-sm uppercase tracking-widest shadow-lg">בחירת ה-AI עבורך</Badge>
@@ -231,7 +226,7 @@ function BingeCard({ job, onJobClick }: { job: any, onJobClick: (job: any) => vo
       onClick={() => onJobClick(job)}
       className="relative flex-shrink-0 w-[380px] aspect-[16/10] rounded-[32px] overflow-hidden shadow-md hover:shadow-xl cursor-pointer bg-slate-900 snap-start group border-4 border-white"
     >
-      <img src={job.image} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={job.title} />
+      <Image src={job.image} fill className="object-cover transition-transform duration-700 group-hover:scale-105" alt={job.title} />
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent transition-all duration-500 group-hover:bg-black/40" />
       
       {/* חיווי התאמה קבוע */}
@@ -340,7 +335,7 @@ function JobDetailModal({ job, onClose }: { job: any, onClose: () => void }) {
         </button>
         
         <div className="h-[200px] shrink-0 relative">
-          <img src={job.image} className="w-full h-full object-cover" alt="Cover" />
+          <Image src={job.image} fill className="object-cover" alt="Cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-black/20 to-transparent" />
         </div>
         
@@ -474,7 +469,7 @@ function JobDetailModal({ job, onClose }: { job: any, onClose: () => void }) {
               {/* מסלול פנימי: שלב 1 - אתיקה */}
               {flowState === 'internal_step1' && (
                 <motion.div key="internal1" initial={{x:20, opacity:0}} animate={{x:0, opacity:1}} exit={{x:-20, opacity:0}} className="space-y-6 bg-slate-50 p-6 rounded-3xl border border-slate-100">
-                  <button onClick={() => setFlowState('idle')} className="text-sm font-bold text-slate-400 hover:text-slate-600 flex items-center gap-1"><ChevronRightSmall size={14}/> חזור לבחירה</button>
+                  <button onClick={() => setFlowState('idle')} className="text-sm font-bold text-slate-400 hover:text-slate-600 flex items-center gap-1"><ChevronRight size={14}/> חזור לבחירה</button>
                   <h4 className="font-black text-slate-900 text-xl">לפני שמתחילים</h4>
                   
                   <div className="space-y-3">
@@ -509,7 +504,7 @@ function JobDetailModal({ job, onClose }: { job: any, onClose: () => void }) {
               {/* מסלול פנימי: שלב 2 - הגשה */}
               {flowState === 'internal_step2' && (
                 <motion.div key="internal2" initial={{x:20, opacity:0}} animate={{x:0, opacity:1}} exit={{x:-20, opacity:0}} className="space-y-6 bg-slate-50 p-6 rounded-3xl border border-slate-100">
-                  <button onClick={() => setFlowState('internal_step1')} className="text-sm font-bold text-slate-400 hover:text-slate-600 flex items-center gap-1"><ChevronRightSmall size={14}/> חזור אחורה</button>
+                  <button onClick={() => setFlowState('internal_step1')} className="text-sm font-bold text-slate-400 hover:text-slate-600 flex items-center gap-1"><ChevronRight size={14}/> חזור אחורה</button>
                   
                   <div className="border-2 border-dashed border-slate-300 rounded-2xl p-6 bg-white hover:bg-slate-50 cursor-pointer transition-colors text-center">
                      <Upload size={24} className="mx-auto text-slate-400 mb-2" />
@@ -526,7 +521,7 @@ function JobDetailModal({ job, onClose }: { job: any, onClose: () => void }) {
               {/* מסלול חבר: העלאה ולינק */}
               {flowState === 'referral_step1' && (
                 <motion.div key="referral1" initial={{x:20, opacity:0}} animate={{x:0, opacity:1}} exit={{x:-20, opacity:0}} className="space-y-6 bg-slate-50 p-6 rounded-3xl border border-slate-100 text-center">
-                  <button onClick={() => setFlowState('idle')} className="text-sm font-bold text-slate-400 hover:text-slate-600 flex items-center gap-1 mb-2"><ChevronRightSmall size={14}/> חזור</button>
+                  <button onClick={() => setFlowState('idle')} className="text-sm font-bold text-slate-400 hover:text-slate-600 flex items-center gap-1 mb-2"><ChevronRight size={14}/> חזור</button>
                   <h4 className="font-black text-slate-900 text-xl">הפניית חבר</h4>
                   
                   <div className="border-2 border-dashed border-yellow-300 rounded-2xl p-8 bg-yellow-50/50 hover:bg-yellow-50 cursor-pointer transition-colors">

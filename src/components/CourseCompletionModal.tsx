@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { createBrowserClient } from '@supabase/ssr';
 import { CheckCircle, Award, Loader2 } from 'lucide-react';
+import Image from 'next/image';
 // הוספנו כאן את DialogTitle ו-DialogDescription שהיו חסרים
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -67,7 +68,7 @@ export function CourseCompletionModal({ isOpen, onClose, onSuccess, course, miss
         {/* Header Image Area */}
         <div className="relative h-32 bg-slate-900">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-90"></div>
-          {course.image_url && <img src={course.image_url} alt={course.title || "Course image"} className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-50" />}
+          {course.image_url && <Image src={course.image_url} alt={course.title || "Course image"} fill className="object-cover mix-blend-overlay opacity-50" />}
           
           <div className="absolute bottom-4 right-4 text-white">
             <div className="text-xs font-bold bg-white/20 backdrop-blur-md px-2 py-1 rounded-md inline-block mb-1">

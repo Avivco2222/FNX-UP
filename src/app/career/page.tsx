@@ -3,11 +3,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { 
   Search, Brain, Zap, Target, Users, Map, 
-  CheckCircle2, TrendingUp, Clock, Compass, Sparkles, Briefcase, ArrowLeft, Flame, Lock, Mail, ChevronDown, X, Plus
+  TrendingUp, Clock, Compass, Briefcase, ArrowLeft, Flame, Lock, Mail, ChevronDown, X, Plus
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
@@ -163,12 +164,6 @@ export default function FluidCompass() {
   return (
     <div className="h-screen w-full bg-[#F8FAFC] flex flex-col font-sans overflow-hidden" dir="rtl">
       
-      <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet" />
-      <style jsx global>{`
-        body { font-family: 'Heebo', sans-serif; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
 
       {/* HEADER - FIXED HEIGHT */}
       <header className="h-[64px] shrink-0 bg-white border-b border-slate-200 flex items-center justify-between px-6 z-30 shadow-sm">
@@ -435,14 +430,14 @@ export default function FluidCompass() {
               </div>
 
               <div className="px-5 pb-3 text-center">
-                 <p className="text-[10px] font-bold text-slate-500 leading-snug italic">"{motivation}"</p>
+                 <p className="text-[10px] font-bold text-slate-500 leading-snug italic">&quot;{motivation}&quot;</p>
               </div>
 
               <div className="p-3 bg-slate-50 border-t border-slate-100">
                  <div className="flex items-center justify-between px-1">
                     <div className="flex items-center gap-2.5">
                        <div className="w-8 h-8 rounded-full overflow-hidden border border-slate-200 shadow-sm">
-                          <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150" alt="HR" className="w-full h-full object-cover" />
+                          <Image src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150" alt="HR" width={32} height={32} className="w-full h-full object-cover" />
                        </div>
                        <div>
                           <div className="text-xs font-black text-slate-800 leading-none">מיכל מור</div>

@@ -3,14 +3,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Zap, Brain, Users, Gamepad2, PenTool, CheckSquare, 
+  Zap, Brain, Users, Gamepad2, 
   Play, Trophy, X, Target, Lightbulb, Rocket, 
-  TrendingUp, Star, ChevronLeft, Search, Filter,
-  Book, Mic, MessageSquare, Flame, Loader2, Compass
+  TrendingUp, Star, ChevronLeft, Search,
+  Book, Mic, Flame, Loader2, Compass
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import Image from 'next/image';
 
 // --- DATA DEFINITIONS ---
 const WORLDS = [
@@ -128,8 +129,7 @@ export default function InfiniteLearningMarketplace() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] font-['Heebo'] pb-20 selection:bg-blue-200" dir="rtl">
-      <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet" />
+    <div className="min-h-screen bg-[#F8FAFC] pb-20 selection:bg-blue-200" dir="rtl">
       
       {/* --- HEADER --- */}
       <header className="bg-white/90 backdrop-blur-md border-b border-slate-200 px-8 py-4 sticky top-0 z-40 shadow-sm">
@@ -149,7 +149,7 @@ export default function InfiniteLearningMarketplace() {
                 </div>
              </div>
              <div className="w-9 h-9 rounded-full bg-slate-200 overflow-hidden border-2 border-white shadow-sm">
-                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aviv" alt="Avatar" />
+                <Image src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aviv" alt="Avatar" width={36} height={36} />
              </div>
           </div>
         </div>
@@ -234,7 +234,7 @@ export default function InfiniteLearningMarketplace() {
                             {/* Background Image Overlay */}
                             {item.image && (
                                 <div className="absolute inset-0 z-0">
-                                    <img src={item.image} className="w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-1000" alt="bg" />
+                                    <Image src={item.image} fill className="object-cover opacity-20 group-hover:scale-110 transition-transform duration-1000" alt="bg" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                                 </div>
                             )}
@@ -310,7 +310,7 @@ export default function InfiniteLearningMarketplace() {
                   <div className="p-8 flex items-center justify-between">
                      <div>
                         <h2 className="text-2xl font-black text-slate-900">Python & AI Masterclass</h2>
-                        <p className="text-slate-500 font-bold mt-1 italic">"מי שלומד היום, מוביל מחר"</p>
+                        <p className="text-slate-500 font-bold mt-1 italic">&quot;מי שלומד היום, מוביל מחר&quot;</p>
                      </div>
                      <Button className="rounded-2xl h-12 px-8 bg-blue-600 hover:bg-blue-700 font-black text-md shadow-lg" onClick={() => setActiveCourseModal(false)}>
                         סימון כהושלם
