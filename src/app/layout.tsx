@@ -6,7 +6,11 @@ import { Toaster } from '@/components/ui/toaster';
 import { UserProvider } from '@/context/UserContext';
 import './globals.css';
 
-const heebo = Heebo({ subsets: ['hebrew', 'latin'] });
+const heebo = Heebo({ 
+  subsets: ['hebrew', 'latin'],
+  weight: ['300', '400', '500', '700', '800', '900'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'FnxLevelUp | הפניקס',
